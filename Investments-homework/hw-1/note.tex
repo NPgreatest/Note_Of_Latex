@@ -1,0 +1,428 @@
+    \documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{newtxtext}
+\usepackage{geometry}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage[strict]{changepage} % 提供一个 adjustwidth 环境
+\usepackage{framed} % 实现方框效果
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{amssymb}
+\geometry{a4paper,centering,scale=0.8,left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}
+
+\definecolor{blueshade}{rgb}{0.95,0.95,1} % 文%本框颜色
+\definecolor{greenshade}{rgb}{0.90,0.99,0.91} % 绿色文本框，竖线颜色设为 Green
+\definecolor{redshade}{rgb}{1.00,0.90,0.90}% 红色文本框，竖线颜色设为 LightCoral
+\definecolor{brownshade}{rgb}{0.99,0.97,0.93} % 莫兰迪棕色，竖线颜色设为 BurlyWood
+\definecolor{yellowshade}{rgb}{1,0.945,0.7255}%米黄色
+\definecolor{DarkYellow}{rgb}{0.7843,0.61176,0.0549}
+
+\newenvironment{formal}[2][greenshade]{%
+\def\FrameCommand{%
+\hspace{1pt}%
+{\color{#2}\vrule width 2pt}%
+{\color{#1}\vrule width 4pt}%
+\colorbox{#1}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent\hspace{-4.55pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%
+\vspace{2pt}\vspace{2pt}%
+}
+{
+\vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+
+
+\title{\Huge 证券投资学-第一次作业    \\\large made by  \LaTeX}
+\author{刘宇晨\hspace*{25pt}20002515\\计金（双）200}
+
+
+%\begin{tcolorbox}
+%    [colback=Emerald!10,colframe=cyan!40!black,title=\textbf{公式}]
+%\end{tcolorbox}
+
+\begin{document} 
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{logo.jpeg}
+        \maketitle
+    \end{center}
+\end{figure}
+\thispagestyle{empty}
+\clearpage
+\pagenumbering{arabic}
+\section*{\center 第二章作业}
+\subsection*{习题11条件整理}
+\begin{center}
+    \begin{tabular}{ccccccc}
+        \hline
+       股票名称 & $P_0$& $Q_0$ & $P_1$& $Q_1$& $P_2$& $Q_2$ \\ \hline
+       A & 90 & 100& 95 & 100& 95 & 100  \\ 
+       B &	50 & 200 &	45 & 200&	45 & 200 \\ 
+       C & 100 & 200& 110 & 200& 55 & 400 \\ \hline
+       \end{tabular}
+\end{center}
+\subsection*{习题11}
+
+
+
+a.计算第一期三只股票的\textbf{价格加权指数}收益率：
+
+该题假设有3只成分股，比较由三只成分股每股仅持有1股的投资组合的价值变化以及价格加权平均指数的变化。
+
+    \begin{align}
+        \text{初始价格}&=90+50+100=240\nonumber\\
+        \text{最终价格}&=95+45+110=250\nonumber\\
+        \text{投资组合价值变化百分比}&=\frac{250-240}{240}={\color{red}4.17\%}\nonumber
+    \end{align}
+
+b.第二年的除数变化：
+
+股票发生拆分前，指数$=95+45+110/3=250/3$。股票分拆后，C的价格下降为每股55美元，那么必须找一个新的除数$d$
+以确保指数不变。
+\[\frac{A_{P2}+B_{P2}+C_{P2}}{d}=\frac{95+45+55}{d}=\frac{250}{3}\]
+
+通过计算得出除数$d$由最初的3变为{\color{red}2.34}\\
+
+c.计算第二期的收益率
+
+由于股票发生拆分，根据加权指数的概念定义需要按照单位股票的价格进行计算：
+
+可以观察到拆分后进行除数重新计算，指数不变，收益率也为0。
+
+\clearpage
+\subsection*{习题12}
+
+a.市值加权指数的收益率：市值加权指数赋予高价值股票更高的权重
+
+市值加权指数的收益率是通过计算股票投资组合的价值增值得出的。
+    \begin{align}
+        \text{初始价格}&=90\times 100+50\times 200+100 \times 200=39000\nonumber\\
+        \text{最终价格}&=95\times 100+45\times 200+110 \times 200=40500\nonumber\\
+        \text{市值加权指数的收益率}&=\frac{40500-39000}{39000}={\color{red}3.85\%}\nonumber
+    \end{align}\\
+
+b.等权重指数的收益率：
+
+等权重指数赋予每种收益率相同的权重，即对指数中每只股票的投资金额相等。
+
+假设$\mathcal{A}, \mathcal{B} ,\mathcal{C} $股票都买入单位份数，可以通过计算平均收益率来求得等权重指数收益率
+    \begin{align}
+        r_\mathcal{A}&=(95/90)-1=0.0556\nonumber\\
+        r_\mathcal{B}&=(45/50)-1=-0.10\nonumber\\
+        r_\mathcal{C}&=(110/100)-1=0.10\nonumber\\
+        \text{等权重指数的收益率}&=(0.0556-0.10+0.10)/3=0.0185={\color{red}1.85\%}\nonumber
+    \end{align}
+
+
+\clearpage
+\section*{\center 第四章作业}
+\subsection*{习题11}
+a.资金的资产净值(net asset value,NAV)计算的公式如下：
+\begin{align}
+    \text{资产净值}&=(\text{资产市值}-\text{负债})/\text{发行在外的股份数量}\nonumber\\
+                  &=(2\text{亿}-300\text{万})/500\text{万}={\color{red}39.4\text{美元/股}}\nonumber
+\end{align}
+
+b.求折价或溢价百分比：由于每份售价低于净值，所以应为折价。
+\[\frac{36-39.4}{39.4}={\color{red}8.63\%}\]
+
+\subsection*{习题13}
+a.基金投资者本年度的收益率：由于基金投资者购买基金时要接受折价和溢价，所以：
+\begin{align}
+    \text{年初价格}&=12.00 \times (1+2\%)=12.24\nonumber\\
+    \text{年末价格}&=12.10 \times (1-7\%)=11.253\nonumber\\
+    \text{年度的收益率}&=(\text{NAV}_1-\text{NAV}_0+\text{收入和资本利得的分配})/\text{NAV}_0\nonumber\\
+                &=(11.253-12.24+1.5)/12.24={\color{red}4.20\%}\nonumber
+\end{align}
+
+b.持有相同证券时不考虑基金的折价和溢价，所以：
+\begin{align}
+    \text{年初价格}&=12.00\nonumber\\
+    \text{年末价格}&=12.10\nonumber\\
+    \text{年度的收益率}&=(\text{NAV}_1-\text{NAV}_0+\text{收入和资本利得的分配})/\text{NAV}_0\nonumber\\
+                &=(12.10-12+1.5)/12={\color{red}13.33\%}\nonumber
+\end{align}
+
+\clearpage
+\section*{\center 第五章作业}
+\subsection*{习题10}
+在均值为$20\%$，标准差$30\%$，$95.44\%$的置信水平下，预期实际收益的范围。参考图5-4。
+
+较小的标准差意味着可能的收益表现更多地聚集在均值附近，较大的标准差则意味着可能实现的收益水平更加分散。
+
+由于该题的标准差比图中的标准差大，故则收益水平会更加\textbf{分散},由于均值为$20\%$，则最下边的坐标轴会\textbf{往左偏移10}。
+
+在向左偏移$10\%$后，收益范围为$-20\%-60\%$，在分散后，范围应比其更大，在$a,b,c,d$四个选项中只有$a$符合要求：
+
+验证：由概率论的知识，有置信水平$1-\alpha=95.44\%$，均值$\mu=0.2$，方差$\sigma^2=0.09$，构造方程
+\begin{align}
+    X&\sim(0.1,0.3^2)\nonumber\\
+    P\{\mu -x<X <\mu + x\}&=95.44\% \nonumber\\
+    P\{\frac{0.2-x-0.1}{0.3}<\frac{X-0.2}{0.3}<\frac{0.2+x-0.1}{0.3}\}&=95.44\%\nonumber\\
+    95.44\%&=\varPhi (7/3x)-\varPhi (-5/3x)\nonumber\\
+    \text{解得：}x&=0.6\nonumber
+\end{align}
+所以范围为：{\color{red}$a.\hspace*{4pt}-40\%\sim 80\%$}
+
+\clearpage
+\subsection*{习题18}
+a.计算该证券年收益率
+
+我们把期限为$T$年的无风险收益率表示成投资价值增长的百分比$r_f(T)$
+
+有效年利率(effective annual rate,EAR)为一年投资价值增长百分比。
+
+b.计算该房产投资的年化连续复利风险溢价，年化百分比利率用$r_{cc}$表示
+
+风险溢价是超额收益的期望值，$E(r)-E(r_f)$。无风险利率取通胀指数型债券的收益率
+
+\begin{tcolorbox}
+    [colback=Emerald!10,colframe=cyan!40!black,title=\textbf{a、b计算(横线划分)：}]
+    \begin{align}
+        r_f(T)&=\frac{100}{P(T)}=(\frac{100}{84.49}-1)=18.36\%\nonumber\\
+        1+EAR&={[1+r_f(T)]}^{1/T}\nonumber\\
+        EAR&={[1+0.1836]}^{1/10}-1={\color{red}1.70\%}\nonumber\\ \hline
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        EAR&={(1+0.02)}^{4}-1 =8.24\%\nonumber\\
+        r_{cc}&=\text{ln}(1+EAR)=7.92\%\nonumber\\
+        \text{根据老师要求，}r_f&=6\%\nonumber\\
+        \text{风险溢价}&=E(r)-E(r_f)=7.92\%-6\%={\color{red}1.92\%}\nonumber
+    \end{align}
+\end{tcolorbox}
+
+c.计算标准差
+
+不管时段多长，连续复利收益服从正态分布。假设对数股票价格服从预期年华增长率为$g$,标准差为$\sigma$的正态分布。
+预期的年化连续复利收益率(CC)等于
+\[E(r_{CC})=m=g+\frac{1}{2}\sigma^2=8.42\%\]
+
+当实际年收益率$r_{CC}$呈对数正态分布时，
+\begin{align}
+    \text{Var}(r)&=e^{2m}(e^{\sigma^2}-1)=11.89\%\nonumber\\
+    \sigma(r_{CC})&=\sqrt{\text{Var}(r_{CC})}={\color{red}10.90\%} \nonumber
+\end{align}
+
+d.10年后损失概率是：
+
+由风险溢价，超额收益的标准差$\sqrt{10}\times 10.9\%=34.49\%$，可算出夏普利率$1.92\%/34.49\%=0.0557$。
+将夏普比率的值输入EXCEL的NORMSDIST函数求得
+\[\text{Normsdist}(0.0557)=52.3\%\]
+所以十年后损失的概率为={\color{red}52.3\%}。
+\clearpage
+\subsection*{CFA考题-第一题}
+思路：先根据概率和投资数额100000算出权益和无风险短期国库券的期望收益，再根据风险溢价公式进行计算。
+    \begin{align}
+        E(r)&=\frac{100000+0.6\times 50000+0.4\times -30000}{100000}-1 = 18\%\nonumber\\
+        E(r_f)&=\frac{100000+5000}{100000}=5\%\nonumber\\
+        \therefore  \text{风险溢价}&=E(r)-E(r_f)=18000-5000={\color{red}13000}\nonumber
+    \end{align}
+ 
+
+\subsection*{CFA考题-第二题}
+组合的期望收益：
+\[E(\mathcal{X} )=0.2\times -25+0.3\times 10+0.5\times 24={\color{red}10\%}\]
+\subsection*{CFA考题-第三、四、五、六、七题}
+
+\begin{tcolorbox}
+    [colback=yellowshade,colframe=DarkYellow,title=\textbf{$\mathcal{X}$、$\mathcal{Y}$的收益率及其标准差的计算}]
+    \begin{align}
+        E(\mathcal{X} )&=0.2\times -20+0.5\times 18+0.3\times 50={\color{red}20\%}\nonumber\\
+        E(\mathcal{Y} )&=0.2\times -15+0.5\times 20+0.3\times 10={\color{red}10\%}\nonumber\\
+        \hat{\sigma}^2&=\left(\frac{n}{n-1}\right) \times \frac{1}{n} \sum_{s=1}^n[r(s)-\bar{r}]^2=\frac{1}{n-1} \sum_{s=1}^n[r(s)-\bar{r}]^2 \nonumber\\
+        \hat{\sigma}&=\sqrt{\frac{1}{n-1} \sum_{s=1}^n[r(s)-\bar{r}]^2}\nonumber\\
+        \hat{\sigma}_\mathcal{X}  &=\sqrt{\frac{1}{3-1}0.2\times {(-20-20)}^2+0.5\times {(18-20)}^2+0.3\times {(50-20)}^2}={\color{red}17.20} \nonumber\\
+        \hat{\sigma}_\mathcal{Y}  &=\sqrt{\frac{1}{3-1}0.2\times {(-15-10)}^2+0.5\times {(20-10)}^2+0.3\times {(10-10)}^2}={\color{red}9.454} \nonumber
+    \end{align}
+\end{tcolorbox}
+
+5.假设投资9000美元于股票$\mathcal{X} $，1000美元于股票$\mathcal{Y} $，组合的期望收益率：
+\[E(\mathcal{X} +\mathcal{Y})=\frac{9000}{9000+1000}\times E(\mathcal{X} ) +\frac{1000}{9000+1000}\times E(\mathcal{Y} )={\color{red}1900}\]\\
+
+6.经济状况正常但是股票表现差的概率：$P(X)=0.5\times0.3={\color{red}15\%}$\\\\
+
+7.期望收益为：$E(r)=0.1\times 15\%+0.6\times 13\% +0.3\times 7\%={\color{red}11.4\%}$
+
+\clearpage
+\section*{\center 第六章作业}
+\subsection*{习题5}
+若投资者仍然偏好此资产，那么其效用应大于短期国债的效用，设该组合为$\alpha $。
+    \begin{align}
+        U_\alpha&=E(\alpha)-\frac{1}{2}A\sigma_\alpha^2=0.12-0.0162A\nonumber\\
+        U_f&=E(r_f)-\frac{1}{2}A\sigma_{r_f}^2=0.07\nonumber\\
+        \text{设}U_\alpha&=U_f\nonumber\\
+        \text{解得}{\color{red}A}&{\color{red}=3.09} \hspace*{30pt} A>0,\text{则该投资者风险厌恶}\nonumber
+    \end{align}
+
+
+
+\subsection*{习题21}
+a.目标期望收益率为$8\%$，则设投资给$r_p$的比例为$y$，给$r_f$的比例则为$1-y$。方程为：
+\begin{align}
+    y\times E(r_P)+(1-y)\times r_f&=8\%\nonumber\\
+    y&={\color{red}0.5}\nonumber
+\end{align}
+
+故50\%投资在$r_P$,故50\%投资在$r_f$\\
+
+b.求组合的标准差：
+
+根据统计学中基本原理，如果一个随机变量乘以一个常数，那么新变量的标准差也应由原标准差乘以该常数。所以
+当把一个风险资产和一个无风险资产放到一个资产组合中，整个组合的标准差就是风险资产的标准差乘以它在投资组合中的比例。所以有
+\[\sigma_C=y\sigma_P=0.5\times 15\%={\color{red}7.5\%}\]
+
+c.标准差不超过12\%的情况下收益水平最大，根据b中的原理，设投资给$r_p$的比例为$y$，给$r_f$的比例则为$1-y$。方程为：
+\begin{align}
+    y\sigma_P&=12\%\nonumber\\
+    y&=0.8
+\end{align}
+故{\color{red}80\%投资在$r_P$,故20\%投资在$r_f$}\\
+\clearpage
+\subsection*{CFA考题-第一、二、三题}
+1.当$A=4$时，由第21题b可知，如果分散投资1,2,3,4无法将效用达到最大化。若要最大化效用，应将全部资金投入一个最适合的单个投资
+\begin{tcolorbox}
+    [colback=greenshade,colframe=Green,title=\textbf{计算：}]
+    \begin{align}
+        U_1&=E(r_1)-1/2A\sigma_1^2=0.12-2\times0.3 &=-0.48\nonumber\\
+        U_2&=E(r_2)-1/2A\sigma_2^2=0.15-2\times0.5&=-0.85\nonumber\\
+        U_3&=E(r_3)-1/2A\sigma_3^2=0.21-2\times0.16&=-0.11\nonumber\\
+        U_4&=E(r_4)-1/2A\sigma_4^2=0.24-2\times0.21&=-0.18\nonumber\\
+        \text{Max}(U)&=U_3\nonumber
+    \end{align}
+    故选择{\color{red}将资金全部投资进投资3}
+\end{tcolorbox}
+
+2.如果我是中性投资者，那么我只根据风险资产的期望收益率来判断收益预期。那么将会选择期望收益最高的{\color{red}投资4}。\\
+
+3.效用函数中的参数A代表：{\color{red}b. \hspace*{4pt}投资者的风险厌恶系数}\\
+(风险偏好者A<0，风险厌恶者A>0,风险中性投资者A = 0)
+
+\clearpage
+\section*{\center 第七章作业}
+\subsection*{4、7、8、9信息整合：}
+\begin{center}
+    \begin{tabular}{ccc}
+        &(\%)&(\%)\\ \hline
+        & 期望收益& 标准差  \\ \hline
+       股票基金S & 20 & 30  \\ 
+       债券基金B &	12 & 15  \\ 
+       短期国债货币基金 & 8 & 0 \\ \hline
+       \end{tabular}
+\end{center}
+基金的收益率之间的相关系数为0.1
+
+\subsection*{习题4}
+最小方差投资组合的投资比例，期望值，标准差：
+这道题要求求两个风险资产的最佳组合，不考虑无风险资产，设投资在$S$上的比例为$w_S$，投资在$B$上的比例为$w_B$。
+\begin{tcolorbox}
+    [colback=yellowshade,colframe=DarkYellow,title=\textbf{投资比例，期望值与标准差的计算}]
+    \begin{align}
+        \text{概率论中：Cov}(X,Y)&=\rho_{XY}\times \sqrt{D(X)} \sqrt{D(Y)}\nonumber\\
+        \text{Cov}(S,B)&=\rho_{S,B}\times \sqrt{\sigma_S^2} \sqrt{\sigma_B^2}=4.5\times {10}^{-3}\nonumber\\
+        \therefore   w_{Min}(S)&=\frac{\sigma_B^2-\text{Cov}(r_S,r_B)}{\sigma_S^2+\sigma_B^2-2\text{Cov}(r_S,r_B)}=\frac{4}{23}= {\color{red}0.1739}&=w_S\nonumber\\
+        w_{Min}(B)&=1-w_{Min}(D)=\frac{19}{23}={\color{red}0.8261}&=w_B\nonumber\\
+        E(r_p)&=w_SE(r_S)+w_BE(r_B)\nonumber\\
+        &={\color{red}13.39\%}\nonumber\\
+        \sigma_p&=\sqrt{w_S^2\sigma_S^2+w_B^2\sigma_B^2+2w_Sw_B\text{Cov}(r_S,r_B)}\nonumber\\
+        &={\color{red}13.92\%}\nonumber
+    \end{align}
+\end{tcolorbox}
+\clearpage
+\subsection*{习题7}
+最优风险投资组合的资产比例，期望收益与标准差：设股票基金和债券基金分别为$D.E$，投资在$D$上的比例为$w_D$，投资在$E$上的比例为$w_E$。
+\begin{tcolorbox}
+    [colback=Emerald!10,colframe=cyan!40!black,title=\textbf{资产比例，期望值与标准差的计算(最大化夏普比率，R为超额收益率)\hspace*{10pt}}]
+    \begin{align}
+        E(R_D)&=E(r_D)-r_f=20\%-8\%=12\%\nonumber\\
+        E(R_E)&=E(r_E)-r_f=12\%-8\%=4\%\nonumber\\
+      \therefore   w_D&=\frac{E\left(R_D\right) \sigma_E^2-E\left(R_E\right) \operatorname{Cov}\left(R_D, R_E\right)}{E\left(R_D\right)\nonumber \sigma_E^2+E\left(R_E\right) \sigma_D^2-\left[E\left(R_D\right)+E\left(R_E\right)\right] \operatorname{Cov}\left(R_D, R_E\right)}\nonumber\\
+        &={\color{red}0.4516} \nonumber\\
+        w_E&=1-w_D={\color{red}0.5484}\nonumber\\
+        \therefore   E(r_p)&=w_DE(r_D)+w_EE(r_E)={\color{red}15.61\%}\nonumber\\
+        \sigma_p&=\sqrt{w_D^2\sigma_D^2+w_E^2\sigma_E^2+2w_Dw_E\text{Cov}(r_D,r_E)}={\color{red}16.54\%}\nonumber
+    \end{align}
+\end{tcolorbox}
+
+\subsection*{习题8}
+最优配置线下最优报酬-波动性比率是多少？
+
+根据第六章的内容，资本配置线（CAL）的斜率为报酬-波动性比率又称\textbf{夏普比率}：
+\begin{align}
+    \text{夏普比率}&=\frac{\text{风险溢价}}{\text{超额收益率的标准差}}\nonumber\\
+                  &=\frac{0.1561-0.08}{0.1654}={\color{red}0.46}\nonumber
+\end{align}
+
+
+\subsection*{习题9}
+a.收益要求为14\%，投资比例组合：
+
+这道题应该用第六章的资本配置线的方法解决。构造资本配置线以表示对投资者而言所有可能的风险收益组合。
+由于习题8已经求得夏普比率，所以将夏普比率带入资本配置线的斜率即可立即求出标准差。
+\begin{align}
+    E(r_C)&=yE(r_P)+(1-y)r_f=r_f+\frac{E(r_P-r_f)}{\sigma_P}\times \sigma_C\nonumber\\
+        0.14&=0.08+0.46\sigma_C\nonumber\\
+        \therefore \sigma_C&={\color{red}13.04\%}\nonumber
+\end{align}
+
+b.求出分别投资在国库券，股票基金，债券基金的比例：
+
+要求收益率为14\%，设$y$为投资股票基金和债券基金资产组合P和比例，构造资本配置线以表示对投资者而言所有可能的风险收益组合
+，并且令收益率为14\%，可以求得：
+\begin{align}
+    E(r_C)&=yE(r_P)+(1-y)r_f= 0.08+y\times (15.61\%-8\%)=14\%\nonumber\\
+    w_f&={\color{red}21.16\%}\nonumber\\
+    w_D&=(1-21.16\%)\times 45.16\%={\color{red}35.60\%}\nonumber\\
+    w_E&=(1-21.16\%)\times 54.84\%={\color{red}43.24\%}\nonumber
+\end{align}
+
+
+
+\clearpage
+\subsection*{习题12}
+\begin{center}
+    \begin{tabular}{ccc}
+        &(\%)&(\%)\\ \hline
+        股票& 期望收益& 标准差  \\ \hline
+       A & 10 & 5  \\ 
+       B &	15 & 10  \\ \hline
+       \end{tabular}
+\end{center}
+
+A、B间相关系数为-1，构造无风险配置，求无风险收益率：
+
+设投资在$A$上的比例为$w_A$，投资在$B$上的比例为$w_B=1-w_A$。用简单的方差公式即可求出构造比例
+\begin{align}
+    \left\lvert w_A\sigma_A- w_B\sigma_B \right\rvert \leq \sigma_A &\leq  w_A\sigma_A + w_B\sigma_B \nonumber\\
+    \rho=-1\text{,标准差落到最左边}\hspace*{25pt}\sigma_P&=\left\lvert w_A\sigma_A- w_B\sigma_B \right\rvert =0\nonumber\\
+    w_A&=0.6667\nonumber\\
+    w_B&=0.3333\nonumber\\
+    \therefore E(P)=(0.6667×10\%)+(0.3333×15\%)&={\color{red}11.67\%}\nonumber
+\end{align}
+
+\subsection*{习题15}
+项目的投资风险(标准差)：
+\begin{center}
+    \begin{tabular}{ccc}
+        &(\%)&(\%)\\ \hline
+        事件& 概率& 收益  \\ \hline
+       A & 70 & 100  \\ 
+       B &	30 & -50  \\ \hline
+       \end{tabular}
+\end{center}
+
+根据表格，计算出：
+\begin{align}
+    E(X)&=p_Ar_A+p_Br_b=55\%\nonumber\\
+    \text{方差}&=\text{离差平方的期望值}\nonumber\\
+    \sigma^2&=\sum p(s){[r(s)-E(r)]}^2={\color{red}47.25\%}\nonumber\\
+    \sigma&=\sqrt{\sigma^2}={\color{red}68.74\%}\nonumber
+\end{align}
+
+\end{document}

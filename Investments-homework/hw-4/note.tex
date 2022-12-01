@@ -1,0 +1,277 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+\usepackage{newtxtext}
+\usepackage{geometry}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage[strict]{changepage} % 提供一个 adjustwidth 环境
+\usepackage{framed} % 实现方框效果
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\geometry{a4paper,centering,scale=0.8,left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}
+
+\definecolor{blueshade}{rgb}{0.95,0.95,1} % 文%本框颜色
+\definecolor{greenshade}{rgb}{0.90,0.99,0.91} % 绿色文本框，竖线颜色设为 Green
+\definecolor{redshade}{rgb}{1.00,0.90,0.90}% 红色文本框，竖线颜色设为 LightCoral
+\definecolor{brownshade}{rgb}{0.99,0.97,0.93} % 莫兰迪棕色，竖线颜色设为 BurlyWood
+\definecolor{yellowshade}{rgb}{1,0.945,0.7255}%米黄色
+\definecolor{DarkYellow}{rgb}{0.7843,0.61176,0.0549}
+
+\newenvironment{formal}[2][greenshade]{%
+\def\FrameCommand{%
+\hspace{1pt}%
+{\color{#2}\vrule width 2pt}%
+{\color{#1}\vrule width 4pt}%
+\colorbox{#1}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent\hspace{-4.55pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%
+\vspace{2pt}\vspace{2pt}%
+}
+{
+\vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+
+
+\title{\Huge 证券投资学-第四次作业    \\\large made by  \LaTeX}
+\author{刘宇晨\hspace*{25pt}20002515\\计金（双）200}
+
+
+%\begin{tcolorbox}
+%    [colback=Emerald!10,colframe=cyan!40!black,title=\textbf{公式}]
+%\end{tcolorbox}
+
+\begin{document} 
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{logo.jpeg}
+        \maketitle
+    \end{center}
+\end{figure}
+\thispagestyle{empty}
+\clearpage
+\pagenumbering{arabic}
+\section*{\center 第十七章作业}
+\subsection*{习题17}
+a.公司的期望利润：
+\nonumber
+\begin{align}
+    \text{期望利润}&=\text{收入}-\text{固定成本}-\text{可变成本}\\
+    &=120000-30000-(1/3 \times 120000)=50000
+\end{align}
+
+b.公司的经营杠改系数：
+\begin{align}
+    \text{经营杠杆系数}&=1+\text{固定成本}/\text{利润}\\
+    &=1+\frac{30000}{50000}=1.6
+\end{align}
+
+c.如果销售额比预期低10\%，利润下降：
+\begin{align}
+    \text{利润下降百分比}&=\frac{\varDelta \text{利润}}{\text{期望利润}}\\
+   & =\frac{50000-(108000-30000-[(1/3)\times 108000])}{50000}=16\%
+\end{align}
+
+d.证明利润下降百分比等于经营杠改系数乘以销售额下降10\%：
+\[\text{经营杠改系数}\times\text{销售额下降10\%}=1.6\times 10\% = 16\%=\text{利润下降百分比}\]
+
+e.销售额下降多少时利润变为负数？该点的保本销售额是？
+\begin{align}
+    \text{利润变动百分比}&=\text{经营杠杆系数}\times \text{销售额变动百分比}\\
+    -100\%&=1.6\times \text{销售额变动百分比}\\
+    \therefore \text{销售额变动百分比}&=\frac{-100\%}{1.6}=-62.5\%\\
+    \text{收入}&=12000\times (1-62.5\%)=45000
+\end{align}
+
+f.计算保本销售额的利润：
+\[\text{利润}=45000-30000-(1/3)\times 45000=0\]
+\clearpage
+
+
+\section*{\center 第十八章作业}
+\subsection*{习题10}
+a.计算Analog Electronic公司的股价
+\begin{align}
+    r_M&=14\%,r_f=6\%,\beta_P=1.25,\text{根据CAPM模型：}\\
+    k&=r_f+\beta_P(r_M-r_f)=16\%\\
+    b&=\frac{\text{用于再投资的收益}}{\text{总收益}}=\frac{2}{3}\\
+    g&=ROE\times b=\frac{2}{3}\times 9\%=6\%\\
+    P_0&=\frac{D_0\times (1+g)}{k-g}=\frac{E_0\times(1-b)\times(1+g)}{k-g}=10.6
+\end{align}
+
+b.计算市盈率
+\[\frac{P_0}{E_1}=\frac{P_0}{E_0\times (1+g)}=\frac{10.6}{3\times 1.06}=3.33\]
+
+c.计算增长机会现值
+
+只有当公司有高利润的投资项目(即$ROE>k$)时，构思的价值才会增加。
+在本题中，$ROE$(9\%)低于市场资本化率$k$(16\%)，所以$PVGO<0$
+\begin{align}
+    PVGO&=\text{股价}-\text{零增长时的每股价值}\\
+    &=P_0-\frac{E_1}{k}=10.60-\frac{3.18}{16\%}=-9.275
+\end{align}
+
+d.假如公司将在投资率$b$降低至$b^{'}=\frac{1}{3}$，计算股票的内在价值$V_0$，
+分析为什么$V_0$与$P_0$不再相等？是$V_0$大还是$P_0$大？
+\begin{align}
+    g^{'}&=ROE\times b^{'}=3\%\\
+    D_1^{'}&=E_0\times (1+g^{'})\times b^{'}=2.06\\
+    V_0&=\frac{E_0\times(1-b^{'})\times(1+g^{'})}{k-g^{'}}=15.85
+\end{align}
+
+$V_0$是公司的内在价值，而$P_0$是市场上公司的股价，在公司调整投资策略之前，
+如果市场不是强有效市场，是不会对公司的决策做出立即的反应，所以此时$P_0<V_0$。
+
+书中最普遍的假设是$P_0$与$V_0$的差异永远不会消失，且市场价格将永远以接近$g$的增长率增长下去。
+如果这样，内在价值与市场价格之间的差异也将以相同的增长率增长。
+\clearpage
+\subsection*{习题13}
+a.Xyrong股票的内在价值是多少？
+\begin{align}
+    r_M&=15\%,r_f=8\%,\beta_P=1.2,\text{根据CAPM模型：}\\
+    k&=r_f+\beta_P(r_M-r_f)=16.4\%\\
+    b&=\frac{\text{用于再投资的收益}}{\text{总收益}}=1-40\%=60\%\\
+    g&=ROE\times b=20\%\times 60\%=12\%\\
+    P_0&=\frac{D_0\times (1+g)}{k-g}=\frac{E_0\times(1-b)\times(1+g)}{k-g}=101.82
+\end{align}
+
+b.若股票当前市场价为100美元，预计一年后将等于内在价值，那么于其持有股票一年的收益率为多少？
+
+一年后，股票上涨之后的价值为$P_1=V_0\times(1+g)=114.04$，此时$P_0=100 $，则持有期收益率：
+\[E(r)=\text{股息收益率}+\text{资本利得收益率}=\frac{D_1}{P_0}+\frac{P_1-P_0}{P_0}=18.52\]
+\subsection*{习题19}
+根据题目所给信息使用自由现金流模型估计公司的权益价值(金钱以万美元作为单位)：
+\begin{itemize}
+    \item 税前营运现金流(t+1)=$200\times (1+5\%)=210$
+    \item 折旧(t+1)=$20\times (1+5\%)=21$
+    \item 税(t+1)=(税前营运现金流(t+1)-折旧(t+1))$\times$税率=661.5
+    \item 税后现金流(t+1)=税前营运现金流-税(t+1)=143.85
+    \item 公司税后用于投资(t+1)=税前营运现金流(t+1)$\times 20\%$=42
+    \item 自由现金流=税后现金流(t+1)-公司税后用于投资(t+1)=101.85
+    \item 总价值：
+    \begin{align}
+        \text{总价值}&=\frac{C_1}{k-g}=\frac{101.85}{12\%-5\%}=1455\\
+        \text{股权价值}&=\text{总价值}-\text{负债}=1455-400=1055 \text{(万美元)}
+    \end{align}    
+\end{itemize}
+\subsection*{CFA习题-7}
+a.计算行业的市盈率：
+\begin{align}
+    R_M&=5\%,r_f=6\%,\beta_P=1.2,\text{根据CAPM模型：}\\
+    k&=r_f+\beta_P\times R_M=12\%\\
+    \frac{P_0}{E_1}&=\frac{1-b}{k-ROE\times b}=\frac{1-40\%}{12\%-25\%\times 40\%}=30\%
+\end{align}
+
+b.分析每个因素导致国家A的市盈率高还是国家B的市盈率高
+\begin{enumerate}
+    \item 实际GDP的预期增长率A<B：\\
+    当实际GDP增长率高时，该国经济形势较好，可能会导致股市大盘上扬。从而带动个股价值上升。
+    所以这可能导致B国行业的市盈率高于A国。
+    \item 政府债券收益率A>B：\\
+    当$r_{fA}>r_{fB}$时，$k_A>k_B$，根据市盈率的公式，当$b$和$ROE$不变时，A国行业市盈率低于B国。
+    \[\frac{P_{0A}}{E_{1A}}=\frac{1-b}{k_A-ROE\times b}<\frac{P_{0B}}{E_{1B}}=\frac{1-b}{k_B-ROE\times b}\]
+    \item 权益风险溢价A>B：\\
+    与2一样，$R_{MA}>R_{MB}$时，$k_A>k_B$，进而导致A国行业市盈率低于B国。
+\end{enumerate}
+\subsection*{CFA习题-8}
+a.计算必要收益率
+\[k=r_f+\beta (r_M-r_F)=4.5\%+1.15(14.5\%-4.5\%)=16\%\]
+
+b.估计Smile WHite公司股票的内在价值：
+由于运用两阶段股利贴现模型，可以将前三年得到的股利现金流按市场到期收益率贴现到现在，
+并且运用固定增长的股利贴现模型将第三年的股票价格再贴现到现在相加，即可得到股票定价。
+\begin{align}
+    V_0&=\frac{D_1}{k-g}\\
+    &=\sum_{t = 1}^{3} \frac{D_0 \times (1+g_1)^t}{(1+k)^t}+\frac{D_3(1+g_2)}{(k-g_2)(1+k)^3}\\
+    &=\frac{1.72\times (1+12\%)}{(1+16\%)}
+    +\frac{1.72\times (1+12\%)^2}{(1+16\%)^2}
+    +\frac{1.72\times (1+12\%)^3}{(1+16\%)^3}
+    +\frac{1.72(1+12\%)^3  (1+9\%)}{(16\%-9\%)(1+16\%)^3}\\
+    &=28.89
+\end{align}
+
+c.通过比较两家公司的内在价值和市场价值，应该建议购买哪一家公司的股票
+
+假设QuickBrush公司为公司A，SmileWhite公司为公司B。那么计算市场价值和内在价值的差值与市场价值之比：
+\[V_A>P_A \hspace*{30pt} V_B<P_B \]
+
+可以看出来A公司在市场上被严重低估，B公司在市场上被高估，所以应投资A公司的股票。
+
+d.对比固定增长的股利贴现模型，说出两阶段股利贴现模型的一个优点，并说出所有股利贴现模型共有的缺点
+\begin{enumerate}
+    \item 两阶段股利贴现模型的优点：
+    
+    相比于单阶段贴现模型，两阶段模型可以估值更加得准确。
+    两阶段增长模型允许股利在公司成熟期按不同的增长率增长。
+    
+    另外，为了评估暂时具有高增长率的公司，分析师通常使用多阶段股利贴现模型。
+    首先，预测早先高增长时期的股利并计算其现值。然后，一旦预计公司进入稳定增长阶段，便使用固定增长的
+    股利贴现模型对剩下的股利流进行贴现。这样可以在公司初期避免增长率高于贴现率的问题。
+    \item 所有股利贴现模型共有的缺点：对股票进行估值时要做敏感性分析。比如，对于市场资本化率的
+    微小变化也会造成内在价值的重大变化。
+\end{enumerate}
+\clearpage
+
+
+\section*{\center 第十九章作业}
+\subsection*{习题12}
+求公司的总资产收益率($ROE$)：
+\begin{align}
+    ROE&=(1-\text{税率})[ROA+(ROA-\text{利率})\times \frac{\text{债务}}{\text{权益}}]\\
+    3\%&=(1-35\%)\times [ROA+(ROA-6\%)\times 0.5]\\
+    \text{解得} \hspace*{15pt} ROA&=5.08\%
+\end{align}
+    
+
+
+\subsection*{CFA习题-13}
+a.计算2010年和2014年以上五个组成部分的值，并根据计算出的结果计算2010年和2014年的净资产收益率。
+\begin{large}
+\begin{center}
+    \begin{tabular}{ccc}
+        \toprule 
+        组成部分 &2010 &2014\\
+        \midrule
+        $\text{营业利润率}=\frac{\text{营业收入}-\text{折旧}}{\text{营销收入}}$ &6.5\% &6.8\%\\
+        \specialrule{0em}{3pt}{3pt}
+        $\text{总资产周转率}=\frac{\text{销售收入}}{\text{总资产}}$ &2.21 &3.36\\
+        \specialrule{0em}{3pt}{3pt}
+        $\text{利息负担比率}=\frac{\text{营业收入}-\text{折旧}-\text{利息费用}}{\text{营业收入}-\text{折旧}}$ &91.4\% &100\%\\
+        \specialrule{0em}{3pt}{3pt}
+        $\text{财务杠杆}=\frac{\text{总资产}}{\text{所有者权益}}$ &1.54 &1.32\\
+        \specialrule{0em}{3pt}{3pt}
+        $\text{所得税税率}=\frac{\text{所得税}}{\text{税前利润}}$ &40.63\% &55.22\%\\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{large}
+\begin{align}
+  \therefore  ROE_{2010}&=59.37\%\times 91.4\%\times 6.5\%\times 2.21\times 1.54 =12\%\\
+    ROE_{2014}&=44.78\% \times 100\%\times 6.8\%\times 3.36\times 1.32=13.5\%
+\end{align}
+
+
+b.简要说明$2010\sim 2014$年总资产周转率和财务杠改的变化对净资产收益率的影响。
+\begin{itemize}
+    \item 总资产周转率变化：
+
+    总资产周转率表示公司使用资产的效率，代表每1美元资产每年可以产生多少销售收入。
+    从2014年的2,21增加到了2014年的3.36，对净资产收益率有正面影响。
+    \item 财务杠杆变化：
+
+    财务杠杆用来度量公司的财务杠杆水平，从从2014年的1.54降低到了2014年的1.32，对净资产收益率有负面影响。
+\end{itemize}
+\[ROE=\text{利润率}\times \text{总资产周转率}\]
+
+但是因为资产周转率的上升大大超过财务杠杆的下降，故ROE增加。
+
+\end{document}
+
