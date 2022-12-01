@@ -58,8 +58,14 @@
     \[P(A_1+A_2+A_3)=P(A_1)+P(A_2)+P(A_3)-P(A_1A_2)-P(A_1A_3)-P(A_2A_3)+P(A_1A_2A_3)\]
     \[P(A\cup B)=P(A)+P(B)-P(AB)\]
     \[P(AB)=P(A)P(B)\Longleftrightarrow \mbox{A与B独立}\]
-    \[P(A)=\sum_{i=1}^{n}P(A|B_i)P(B_i)\]
-    \[P(B_i|A)=\frac{P(B_i)P(A|B_i)}{\sum_{j=1}^{n}P(B_j)P(A|B_j)}=\frac{P(B_i)P(A|B_i)}{P(A)}\]
+\begin{nonumber}
+\begin{align}
+    \text{全概率公式：}\hspace{2cm}
+    &P(A)=\sum_{i=1}^{n}P(A|B_i)P(B_i)\\
+    \text{贝叶斯公式：}\hspace{2cm}
+    &P(B_i|A)=\frac{P(B_i)P(A|B_i)}{\sum_{j=1}^{n}P(B_j)P(A|B_j)}=\frac{P(B_i)P(A|B_i)}{P(A)}
+\end{align}
+\end{nonumber}
 \end{tcolorbox}
 \end{large}
 
@@ -167,7 +173,7 @@
     \end{center}
 \end{figure}
 $E\xi =\frac{1}{\lambda} \hspace*{1cm} D\xi =\frac{1}{\lambda ^2}$\\
-{\color{red}$\star$ 模型：Poisson分布与指数分布的关系(电话，飞机)\\无记忆性}
+{\color{red}$\star$ 模型：Poisson分布与指数分布的关系(电话，飞机)\hspace{1cm}无记忆性}
     \item 正态分布\hspace*{0.5cm}$\xi\sim N(\mu,\sigma )$\hspace*{1cm}$\star$3$\mu$原则
     \[p(x)= \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{{(x-\mu)}^2}{2\sigma^2}} \]
     {\color{red}\[\star \hspace{5pt}E(|X|)=\sqrt{\frac{2}{\pi}}\hspace{3cm}f_X(X^2)=\frac{1}{\sqrt{2\pi y}}e^{-\frac{y}{2}} \sim \chi ^2(1)\]}
@@ -207,14 +213,25 @@ $\star \Gamma$函数：
 \clearpage
 
 \section*{\center\Huge 随机变量的数字特征}
-
-    \[E(Y)=E[g(X)]=\int_{-\infty}^{\infty} g(x)f(x)  \,dx \]
-\[P\{|X- \mu | \geq \varepsilon\}\leq \frac{\sigma ^2}{\varepsilon ^2} \]
-\[P\{|X-\mu|<\varepsilon\}\geq 1-\frac{\sigma ^2}{\varepsilon ^2}\]
-\[\rho_{XY} =\frac{\text{Cov}(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}\]
-\[\text{Cov}(\xi,\eta)=E(\xi\eta)-(E\xi)\cdot(E\eta)\]
-$\xi $与$\eta$独立是 $\xi $与$\eta$不相关的充分不必要条件
-
+\begin{nonumber}
+\begin{align}
+    \text{期望的函数嵌套：} \hspace{2cm}
+        &E(Y)=E[g(X)]=\int_{-\infty}^{\infty} g(x)f(x)  \,dx  \\
+    \text{切比雪夫不等式：}\hspace{2cm}
+        &P\{|X- \mu | \geq \varepsilon\}\leq \frac{\sigma ^2}{\varepsilon ^2} \hspace{1cm}
+        P\{|X-\mu|<\varepsilon\}\geq 1-\frac{\sigma ^2}{\varepsilon ^2}  \\
+    \text{相关系数：}\hspace{2cm}
+        &\rho_{XY} =\frac{\text{Cov}(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}\\
+    \text{协方差：}\hspace{2cm}
+        &\text{Cov}(\xi,\eta)=E(\xi\eta)-(E\xi)\cdot(E\eta)\hspace{0.5cm}\text{Cov}(aX,bY)=ab\text{Cov}(X,Y)\\
+        &\text{Cov}(X_1+X_2,Y)=\text{Cov}(X_1,Y)+\text{Cov}(X_2,Y)\\
+        \hline
+    \text{期望与方差基本公式：}\hspace{2cm}
+        &E(CX)=CE(X)\hspace{1cm}E(X+Y)=E(X)+E(Y)\\
+        &D(CX)=C^2D(X)\hspace{2cm}D(X+C)=D(X)\\
+        &D(X)=E(X^2)-{[E(X)]}^2
+    \end{align}
+\end{nonumber}
 \begin{itemize}
     \item 若独立则：\\
     $E(XY)=E(X)E(Y)$\\
@@ -222,9 +239,9 @@ $\xi $与$\eta$独立是 $\xi $与$\eta$不相关的充分不必要条件
     \item 非不独立则：\\
     $D(X+Y)=D(X)+D(Y)+2\hspace*{1pt}\text{Cov}(X,Y)$
 \end{itemize}
+{\color{red}$\star \xi $与$\eta$独立是 $\xi $与$\eta$不相关的充分不必要条件}
 
-
-$\star$下车问题：20位旅客，十个车站可以下车，设
+$\star$下车问题：20位旅客，十个车站可以下车，每个人每站下车的概率均等，设
 \[X_i=\begin{cases}
     0,\text{在第i站没人下车}\\
     1,\text{在第i站有人下车}
@@ -237,21 +254,20 @@ $\star$下车问题：20位旅客，十个车站可以下车，设
 \section*{\center\Huge 数理统计}
 \begin{tcolorbox}
     [colback=greenshade,colframe=Green!50!black,title=\textbf{基本概念}]
-\begin{itemize}
-    \item 卡方分布$\chi ^2 \sim \chi ^2(n)$
-    \[\chi ^2=X_1^2+X_2^2+\cdots +X_n^2\]
-    \[E(X)=n \hspace*{2cm} D(X)=2n\]
-    \item t分布 $t\sim t(n)$
-    \[t=\frac{X}{\sqrt{Y/n}}\]
-    \item F分布 $F\sim F(n_1,n_2)$
-    \[F=\frac{U/n_1}{V/n_2}\]
-\end{itemize}
+\begin{align}
+    \text{卡方分布}\chi ^2 \sim \chi ^2(n)\hspace{2cm} 
+    &\chi ^2=X_1^2+X_2^2+\cdots +X_n^2\\
+    &E(X)=n \hspace*{2cm} D(X)=2n\\
+    \text{t分布} t\sim t(n) \hspace{2cm}
+    &t=\frac{X}{\sqrt{Y/n}}\\
+    \text{F分布} F\sim F(n_1,n_2)\hspace{2cm}
+    &F=\frac{U/n_1}{V/n_2}
+\end{align}
 定理：
 \begin{enumerate}
     \item $\overline{X} \sim N(\mu ,\sigma^2/n)$
     \item $\frac{(n-1)S^2}{\sigma ^2}\sim \chi ^2(n-2)$
     \item $\overline{X}$与$S^2$相互独立
-    \item $\frac{\overline{X}-\mu }{S/\sqrt{n}}\sim t(n-1)$
 \end{enumerate}
 区间估计评选标准：
 \begin{enumerate}
@@ -269,7 +285,7 @@ $\star$下车问题：20位旅客，十个车站可以下车，设
     \item $\sigma^2$未知
     \[t=\frac{\overline{X}-\mu}{S /\sqrt{n}} \sim t(n-1)\qquad\text{置信区间：}(\overline{X} \pm \frac{S}{\sqrt{n}}t_{\alpha/2}(n-1))\]
 \end{itemize}
-
+\begin{center}
 \begin{tabular}{c|c|c}
     \hline
     \multicolumn{3}{c}{假设检验中的两类错误}\\ \hline
@@ -278,6 +294,7 @@ $\star$下车问题：20位旅客，十个车站可以下车，设
     $H_0$为真&正确&犯第I类错误\\ \hline
     $H_0$不真&犯第II类错误&正确\\ \hline
 \end{tabular}
+\end{center}
 \end{tcolorbox}
 \clearpage
 
